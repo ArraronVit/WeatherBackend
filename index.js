@@ -1,6 +1,8 @@
+const dotenv = require('dotenv');
+dotenv.config({path: __dirname + "/.env"});
 const express = require('express');
 const mongoose = require('mongoose');
-const {router} = require('./js/router');
+const router = require('./js/router');
 
 const PORT = process.env.PORT || 3000;
 
@@ -16,7 +18,7 @@ app.use(router);
 
 async function start() {
     try {
-        await mongoose.connect('mongodb+srv://Arraron:9611543Vv@clustervitalya.tg6eh.mongodb.net/VitalyaDatabase', {
+        await mongoose.connect(process.env.MONGO_URL, {
             useNewUrlParser: true,
             useFindAndModify: false,
             useUnifiedTopology: true

@@ -1,9 +1,9 @@
 const fetch = require("node-fetch");
-const apiKey = "d31eb6bba95554da0867103074d5bb27";
+// const apiKey = "d31eb6bba95554da0867103074d5bb27";
 const City = require('./model');
 
 async function getWeatherByCityName(city) {
-    let url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${apiKey}`;
+    let url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${process.env.API_KEY}`;
 
     let response = await fetch(url);
     if (response.ok) {
@@ -15,7 +15,7 @@ async function getWeatherByCityName(city) {
 }
 
 async function getWeatherByCoordinates(latitude, longitude) {
-    let url = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&units=metric&appid=${apiKey}`;
+    let url = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&units=metric&appid=${process.env.API_KEY}`;
 
     let response = await fetch(url);
     if (response.ok) {
@@ -25,6 +25,7 @@ async function getWeatherByCoordinates(latitude, longitude) {
         alert("Error " + response.status);
     }
 }
-
-module.exports.getWeatherByCityName = getWeatherByCityName;
-module.exports.getWeatherByCoordinates = getWeatherByCoordinates;
+module.exports = {
+    getWeatherByCityName,
+    getWeatherByCoordinates
+}
