@@ -2,7 +2,7 @@ const dotenv = require('dotenv');
 dotenv.config({path: __dirname + "/.env"});
 const express = require('express');
 const mongoose = require('mongoose');
-const router = require('./services/network/router');
+const router = require('./services/router/weather');
 
 const PORT = process.env.PORT || 3000;
 

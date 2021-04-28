@@ -1,6 +1,6 @@
 const { Router } = require('express');
 const asyncHandler = require(`express-async-handler`);
-const { getWeatherByCityName, getWeatherByCoordinates } = require('./provider');
+const { getWeatherByCityName, getWeatherByCoordinates } = require('../network/apiProvider');
 
 const router = Router();
 
